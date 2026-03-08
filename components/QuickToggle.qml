@@ -1,5 +1,5 @@
-import Qt5Compat.GraphicalEffects
 import QtQuick
+import QtQuick.Effects
 
 Rectangle {
     id: root
@@ -45,8 +45,6 @@ Rectangle {
     scale: active ? (hovered ? 1.1 : 1) : inactiveScale
     opacity: active ? 1 : 0
     antialiasing: true
-    layer.enabled: true
-    layer.smooth: true
 
     Text {
         id: iconText
@@ -114,10 +112,11 @@ Rectangle {
             mipmap: true
         }
 
-        ColorOverlay {
+        MultiEffect {
             anchors.fill: iconImage
             source: iconImage
-            color: root.iconColor
+            colorization: 1
+            colorizationColor: root.iconColor
         }
 
         Behavior on width {
@@ -163,14 +162,6 @@ Rectangle {
         onClicked: root.clicked()
         onEntered: root.hovered = true
         onExited: root.hovered = false
-    }
-
-    layer.effect: DropShadow {
-        transparentBorder: true
-        radius: 12
-        samples: 25
-        color: root.pulse ? Qt.rgba(root.iconColor.r, root.iconColor.g, root.iconColor.b, 0.25) : root.shadowColor
-        verticalOffset: 4
     }
 
     Behavior on x {
