@@ -245,7 +245,7 @@ FreezeScreen {
     }
 
     Shortcut {
-        sequence: "Escape"
+        sequences: ["Escape", "q"]
         onActivated: {
             cleanup();
             Qt.quit();
