@@ -108,6 +108,21 @@ You can customize the look and feel by editing `theme.toml`. The application loo
 
 Copy the default `theme.toml` to `~/.config/hyprquickframe/theme.toml` and edit it to your liking. New colors are applied instantly!
 
+## Noctalia Support
+ ### Setup
+  1.  Ensure you have `Noctalia` installed.
+  2.  The sync script is located at `scripts/sync_theme.py` in the repository. Make sure it is executable:
+      ```bash
+      chmod +x scripts/sync_theme.py
+      ```
+  3.  Configure Noctalia's `wallpaperChange` hook to run the script in `~/.config/noctalia/settings.json`:
+      ```json
+      "hooks": {
+          "enabled": true,
+          "wallpaperChange": "python3 /home/vishal/config/quickshell/HyprQuickFrame/scripts/sync_theme.py"
+      }
+      ```
+
 ## ⚖️ License & Attribution
 
 This project is licensed under the **MIT License**.
