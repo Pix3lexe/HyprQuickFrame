@@ -29,7 +29,6 @@ Scope {
     property string lastTimestamp: ""
     property bool overlayVisible: false
     readonly property real targetMenuWidth: (modes.length - (editActive ? 1 : 0) - (tempActive ? 1 : 0)) * 100 + 8
-    readonly property int captureScale: hyprlandMonitor ? Math.ceil(hyprlandMonitor.scale) : 1
     property var theme: themeObj
 
     function parseTOML(text) {
@@ -96,7 +95,7 @@ Scope {
         if (!targetMonitor)
             targetMonitor = hyprlandMonitor;
 
-        const scale = root.captureScale;
+        const scale = targetMonitor.scale;
         const monitorX = targetMonitor.lastIpcObject.x;
         const monitorY = targetMonitor.lastIpcObject.y;
         const globalX = Math.round((x + monitorX) * scale);
@@ -172,7 +171,7 @@ Scope {
         const rand = Math.floor(Math.random() * 100000);
         const path = Quickshell.cachePath(`screenshot-${timestamp}-${rand}.png`);
         tempPath = path;
-        captureProcess.command = ["grim", "-l", "0", "-s", String(root.captureScale), path];
+        captureProcess.command = ["grim", "-l", "0", path];
         captureProcess.running = true;
         connectivityProcess.running = true;
     }
