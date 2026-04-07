@@ -344,7 +344,8 @@ Scope {
                 sequence: "Return"
                 onActivated: {
                     const selector = root.mode === "region" ? regionSelector : windowSelector;
-                    root.saveScreenshot(selector.selectionX,
+                    root.saveScreenshot(
+                        selector.selectionX,
                         selector.selectionY,
                         selector.selectionWidth,
                         selector.selectionHeight,
