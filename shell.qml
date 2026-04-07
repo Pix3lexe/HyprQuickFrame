@@ -349,7 +349,7 @@ Scope {
                         selector.selectionY,
                         selector.selectionWidth,
                         selector.selectionHeight,
-                        overlay.modelData.name)
+                        overlay.modelData.name);
                 }
             }
 
